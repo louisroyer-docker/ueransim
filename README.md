@@ -7,10 +7,11 @@ WARNING: **The following images are NOT official builds of UERANSIM**, in the fu
 Environment variable used to select templating system:
 ```yaml
 environment:
-  - ENV TEMPLATE_SCRIPT="template-script.sh"
-  - ENV TEMPLATE_SCRIPT_ARGS=""
-  - ENV CONFIG_UE="/etc/ueransim/ue.yaml"
-  - ENV CONFIG_TEMPLATE="/etc/ueransim/template-ue.yaml"
+  - ROUTING_SCIRPT="routing.sh"
+  - TEMPLATE_SCRIPT="template-script.sh"
+  - TEMPLATE_SCRIPT_ARGS=""
+  - CONFIG_UE="/etc/ueransim/ue.yaml"
+  - CONFIG_TEMPLATE="/etc/ueransim/template-ue.yaml"
 ```
 
 Environment variables for templating:
@@ -54,10 +55,10 @@ environment:
 Environment variable used to select templating system:
 ```yaml
 environment:
-  - ENV TEMPLATE_SCRIPT="template-script.sh"
-  - ENV TEMPLATE_SCRIPT_ARGS=""
-  - ENV CONFIG_UE="/etc/ueransim/gnb.yaml"
-  - ENV CONFIG_TEMPLATE="/etc/ueransim/template-gnb.yaml"
+  - TEMPLATE_SCRIPT="template-script.sh"
+  - TEMPLATE_SCRIPT_ARGS=""
+  - CONFIG_UE="/etc/ueransim/gnb.yaml"
+  - CONFIG_TEMPLATE="/etc/ueransim/template-gnb.yaml"
 ```
 
 Environment variables for templating:

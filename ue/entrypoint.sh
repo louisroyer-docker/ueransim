@@ -2,10 +2,10 @@
 
 set -e
 savedargs=( "$@" )
-config_opt=0
+config_opt=1
 while [ $# -gt 0 ]; do
 	if [[ $1 == "--config" || $1 == "-c" ]]; then
-		config_opt=1
+		config_opt=0
 	fi
 	shift
 done
@@ -16,16 +16,18 @@ if  [[ -n "${CONFIG_TEMPLATE}" && -n "${CONFIG_FILE}" ]]; then
 		echo "[$(date --iso-8601=s)] Running ${TEMPLATE_SCRIPT}${TEMPLATE_SCRIPT_ARGS:+ }${TEMPLATE_SCRIPT_ARGS} for building ${CONFIG_FILE} from ${CONFIG_TEMPLATE}." > /dev/stderr
 		"$TEMPLATE_SCRIPT" "$TEMPLATE_SCRIPT_ARGS"
 	fi
-
-
-	# UERANSIM is able to wait for gNB, `wait-for-it` is not required
-	if [[ $config_opt -eq 0 ]]; then
-		exec nr-ue --config "$CONFIG_FILE" "$@"
-	else
-		exec nr-ue "$@"
-	fi
-
 else
-	# UERANSIM is able to wait for gNB, `wait-for-it` is not required
+	config_opt=0
+fi
+
+if [ -n "${ROUTING_SCRIPT}" ]; then
+	"${ROUTING_SCRIPT}" &
+fi
+
+# UERANSIM is able to wait for gNB, `wait-for-it` is not required
+if [[ $config_opt -eq 1 ]]; then
+	exec nr-ue --config "$CONFIG_FILE" "$@"
+else
 	exec nr-ue "$@"
 fi
+
