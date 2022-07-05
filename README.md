@@ -2,7 +2,7 @@
 WARNING: **The following images are NOT official builds of UERANSIM**, in the future they may include beta-functionalities.
 
 ## UE image
-- On DockerHub: `louisroyer/ueransim-ue`
+- On DockerHub: [`louisroyer/ueransim-ue`](https://hub.docker.com/repository/docker/louisroyer/ueransim-ue)
 
 Environment variable used to select templating system:
 ```yaml
@@ -50,7 +50,7 @@ environment:
 ```
 
 ## gNB image
-- On DockerHub: `louisroyer/ueransim-gnb`
+- On DockerHub: [`louisroyer/ueransim-gnb`](https://hub.docker.com/repository/docker/louisroyer/ueransim-gnb)
 
 Environment variable used to select templating system:
 ```yaml
