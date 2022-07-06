@@ -19,7 +19,7 @@ fi
 
 # GNB
 IFS=$'\n'
-GNB_SUB=""
+GNB_SUB="\n"
 for GNB_IP in ${GNBS}; do
 	if [ -n "${GNB_IP}" ]; then
 		GNB_SUB="${GNB_SUB}\n  ${GNB_IP}"
@@ -27,7 +27,7 @@ for GNB_IP in ${GNBS}; do
 done
 
 # Sessions
-SESSIONS_SUB=""
+SESSIONS_SUB="\n"
 for S in ${SESSIONS}; do
 	if [ -n "${S}" ]; then
 		SESSIONS_SUB="${SESSIONS_SUB}\n  ${S}"
@@ -35,7 +35,7 @@ for S in ${SESSIONS}; do
 done
 
 # Default NSSAI
-DEFAULT_NSSAI_SUB=""
+DEFAULT_NSSAI_SUB="\n"
 for NSSAI in ${DEFAULT_NSSAI}; do
 	if [ -n "${NSSAI}" ]; then
 		DEFAULT_NSSAI_SUB="${DEFAULT_NSSAI_SUB}\n  ${NSSAI}"
@@ -43,7 +43,7 @@ for NSSAI in ${DEFAULT_NSSAI}; do
 done
 
 # Configured NSSAI
-CONFIGURED_NSSAI_SUB=""
+CONFIGURED_NSSAI_SUB="\n"
 for NSSAI in ${CONFIGURED_NSSAI}; do
 	if [ -n "${NSSAI}" ]; then
 		CONFIGURED_NSSAI_SUB="${CONFIGURED_NSSAI_SUB}\n  ${NSSAI}"

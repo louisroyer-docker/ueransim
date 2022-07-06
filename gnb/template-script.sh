@@ -23,7 +23,7 @@ fi
 
 # AMF Configurations
 IFS=$'\n'
-AMF_CONFIGS_SUB=""
+AMF_CONFIGS_SUB="\n"
 for AMF in ${AMF_CONFIGS}; do
 	if [ -n "${AMF}" ]; then
 		AMF_CONFIGS_SUB="${AMF_CONFIGS_SUB}\n  ${AMF}"
@@ -31,7 +31,7 @@ for AMF in ${AMF_CONFIGS}; do
 done
 
 # Supported NSSAI
-SUPPORTED_NSSAIS_SUB=""
+SUPPORTED_NSSAIS_SUB="\n"
 for NSSAI in ${SUPPORTED_NSSAIS}; do
 	if [ -n "${NSSAI}" ]; then
 		SUPPORTED_NSSAIS_SUB="${SUPPORTED_NSSAIS_SUB}\n  ${NSSAI}"
