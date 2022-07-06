@@ -50,17 +50,15 @@ for NSSAI in ${CONFIGURED_NSSAI}; do
 	fi
 done
 
-cp "${CONFIG_TEMPLATE}" "${CONFIG_FILE}"
-sed -i "s/%SESSIONS/${SESSIONS_SUB}/g" "${CONFIG_FILE}"
 sed \
-	-i "s/%MCC/${MCC:-001}/g" \
-	-i "s/%MNC/${MNC:-01}/g" \
-	-i "s/%MSISDN/${MSISDN:-0000000000}/g" \
-	-i "s/%KEY/${KEY:-8baf473f2f8fd09487cccbd7097c6862}/g" \
-	-i "s/%OP/${OP:-8e27b6af0e692e750f32667a3b14605d}/g" \
-	-i "s/%AMF/${AMF:-8000}/g" \
-	-i "s/%GNB/${GNB_SUB}/g" \
-	-i "s/%SESSIONS/${SESSIONS_SUB}/g" \
-	-i "s/%DEFAULT_NSSAI/${DEFAULT_NSSAI_SUB}/g" \
-	-i "s/%CONFIGURED_NSSAI/${CONFIGURED_NSSAI_SUB}/g" \
-"${CONFIG_FILE}"
+	-e "s/%MCC/${MCC:-001}/g" \
+	-e "s/%MNC/${MNC:-01}/g" \
+	-e "s/%MSISDN/${MSISDN:-0000000000}/g" \
+	-e "s/%KEY/${KEY:-8baf473f2f8fd09487cccbd7097c6862}/g" \
+	-e "s/%OP/${OP:-8e27b6af0e692e750f32667a3b14605d}/g" \
+	-e "s/%AMF/${AMF:-8000}/g" \
+	-e "s/%GNB/${GNB_SUB}/g" \
+	-e "s/%SESSIONS/${SESSIONS_SUB}/g" \
+	-e "s/%DEFAULT_NSSAI/${DEFAULT_NSSAI_SUB}/g" \
+	-e "s/%CONFIGURED_NSSAI/${CONFIGURED_NSSAI_SUB}/g" \
+"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"

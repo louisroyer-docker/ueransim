@@ -38,18 +38,15 @@ for NSSAI in ${SUPPORTED_NSSAIS}; do
 	fi
 done
 
-cp "${CONFIG_TEMPLATE}" "${CONFIG_FILE}"
-sed -i "s/%SESSIONS/${SESSIONS_SUB}/g" "${CONFIG_FILE}"
 sed \
-	-i "s/%MCC/${MCC:-001}/g" \
-	-i "s/%MNC/${MNC:-01}/g" \
-	-i "s/%NCI/${NCI:-0x000000010}/g" \
-	-i "s/%ID_LEN/${ID_LEN:-32}/g" \
-	-i "s/%TAC/${TAC:-1}/g" \
-	-i "s/%RLS_IP/${RLS_IP}/g" \
-	-i "s/%N2_IP/${RLS_IP}/g" \
-	-i "s/%N3_IP/${RLS_IP}/g" \
-	-i "s/%AMF_CONFIGS/${AMF_CONFIGS_SUB}/g" \
-	-i "s/%SUPPORTED_NSSAIS/${SUPPORTED_NSSAIS_SUB}/g" \
-	
-"${CONFIG_FILE}"
+	-e "s/%MCC/${MCC:-001}/g" \
+	-e "s/%MNC/${MNC:-01}/g" \
+	-e "s/%NCI/${NCI:-0x000000010}/g" \
+	-e "s/%ID_LEN/${ID_LEN:-32}/g" \
+	-e "s/%TAC/${TAC:-1}/g" \
+	-e "s/%RLS_IP/${RLS_IP}/g" \
+	-e "s/%N2_IP/${RLS_IP}/g" \
+	-e "s/%N3_IP/${RLS_IP}/g" \
+	-e "s/%AMF_CONFIGS/${AMF_CONFIGS_SUB}/g" \
+	-e "s/%SUPPORTED_NSSAIS/${SUPPORTED_NSSAIS_SUB}/g" \
+"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"
