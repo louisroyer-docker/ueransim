@@ -1,4 +1,13 @@
 FROM louisroyer/base-irit:latest
+
+LABEL maintainer="Louis Royer <louis.royer@irit.fr>" \
+      org.opencontainers.image.authors="Louis Royer <louis.royer@irit.fr>" \
+      org.opencontainers.image.source="https://github.com/louisroyer-docker/ueransim"
+
+# Used to disable caching of next steps, if not build since 1 day,
+# allowing to search and apply security upgrades
+ARG BUILD_DATE=""
+
 RUN apt-get update -q && DEBIAN_FRONTEND=non-interactive apt-get install -qy --no-install-recommends --no-install-suggests \
     ueransim \
     && apt-get upgrade -qy \
