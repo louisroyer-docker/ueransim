@@ -22,7 +22,7 @@ IFS=$'\n'
 GNB_SUB=""
 for GNB_IP in ${GNBS}; do
 	if [ -n "${GNB_IP}" ]; then
-		GNB_SUB="${GNB_SUB}\n  - ${GNB_IP}"
+		GNB_SUB="${GNB_SUB}\n  ${GNB_IP}"
 	fi
 done
 
@@ -30,7 +30,7 @@ done
 SESSIONS_SUB=""
 for S in ${SESSIONS}; do
 	if [ -n "${S}" ]; then
-		SESSIONS_SUB="${SESSIONS_SUB}\n  - ${S}"
+		SESSIONS_SUB="${SESSIONS_SUB}\n  ${S}"
 	fi
 done
 
@@ -38,7 +38,7 @@ done
 DEFAULT_NSSAI_SUB=""
 for NSSAI in ${DEFAULT_NSSAI}; do
 	if [ -n "${NSSAI}" ]; then
-		DEFAULT_NSSAI_SUB="${DEFAULT_NSSAI_SUB}\n  - ${NSSAI}"
+		DEFAULT_NSSAI_SUB="${DEFAULT_NSSAI_SUB}\n  ${NSSAI}"
 	fi
 done
 
@@ -46,7 +46,7 @@ done
 CONFIGURED_NSSAI_SUB=""
 for NSSAI in ${CONFIGURED_NSSAI}; do
 	if [ -n "${NSSAI}" ]; then
-		CONFIGURED_NSSAI_SUB="${CONFIGURED_NSSAI_SUB}\n  - ${NSSAI}"
+		CONFIGURED_NSSAI_SUB="${CONFIGURED_NSSAI_SUB}\n  ${NSSAI}"
 	fi
 done
 
