@@ -13,7 +13,7 @@ ENV TEMPLATE_SCRIPT="template-script.sh"
 ENV TEMPLATE_SCRIPT_ARGS=""
 
 COPY ./template-ue.yaml /etc/ueransim/template-ue.yaml
-ENV CONFIG_UE="/etc/ueransim/ue.yaml"
+ENV CONFIG_FILE="/etc/ueransim/ue.yaml"
 ENV CONFIG_TEMPLATE="/etc/ueransim/template-ue.yaml"
 
 ENTRYPOINT ["entrypoint.sh"]

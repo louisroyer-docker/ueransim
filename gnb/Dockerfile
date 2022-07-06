@@ -11,7 +11,7 @@ ENV TEMPLATE_SCRIPT="template-script.sh"
 ENV TEMPLATE_SCRIPT_ARGS=""
 
 COPY ./template-gnb.yaml /etc/ueransim/template-gnb.yaml
-ENV CONFIG_UE="/etc/ueransim/gnb.yaml"
+ENV CONFIG_FILE="/etc/ueransim/gnb.yaml"
 ENV CONFIG_TEMPLATE="/etc/ueransim/template-gnb.yaml"
 
 ENTRYPOINT ["entrypoint.sh"]

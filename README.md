@@ -10,7 +10,7 @@ environment:
   - ROUTING_SCRIPT="routing.sh"
   - TEMPLATE_SCRIPT="template-script.sh"
   - TEMPLATE_SCRIPT_ARGS=""
-  - CONFIG_UE="/etc/ueransim/ue.yaml"
+  - CONFIG_FILE="/etc/ueransim/ue.yaml"
   - CONFIG_TEMPLATE="/etc/ueransim/template-ue.yaml"
 ```
 
@@ -53,7 +53,7 @@ Environment variable used to select templating system:
 environment:
   - TEMPLATE_SCRIPT="template-script.sh"
   - TEMPLATE_SCRIPT_ARGS=""
-  - CONFIG_UE="/etc/ueransim/gnb.yaml"
+  - CONFIG_FILE="/etc/ueransim/gnb.yaml"
   - CONFIG_TEMPLATE="/etc/ueransim/template-gnb.yaml"
 ```
 
