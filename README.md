@@ -31,28 +31,20 @@ environment:
   AMF: "8000"
   # The following variable have no default values
   GNBS: |-
-    '
     - 127.0.0.1
     - ::1
-    '
   SESSIONS: |-
-    '
     - type: "IPv4"
       apn: "sliceA"
       slice:
         sst: 1
         sd: 0x010203
-    '
   CONFIGURED_NSSAI: |-
-    '
     - sst: 1
       sd: 0x010203
-    '
   DEFAULT_NSSAI: |-
-    '
     - sst: 1
       sd: 0x010203
-    '
 ```
 
 ## gNB image
@@ -80,13 +72,9 @@ environment:
   N2_IP: "10.0.1.2"
   N3_IP: "10.0.2.2"
   AMF_CONFIGS: |-
-    '
     - address: 10.0.2.3
       port: 38412
-    '
   SUPPORTED_NSSAIS: |-
-    '
     - sst: 1
       sd: 0x010203
-    '
 ```
