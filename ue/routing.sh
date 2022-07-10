@@ -16,7 +16,7 @@ done
 # use something else than "default" route.
 # The only advantage of not hardcoding uesimtun0 is the case where you have multiple
 # uesimtun interfaces, but only 1 is up. This will probably not happend.
-T=$(ip --brief link ls | grep "LOWER_UP" | grep uesimtun | awk '{print $2; exit}')
+T=$(ip --brief link ls | grep "LOWER_UP" | grep uesimtun | awk '{print $1; exit}')
 # By default, UERANSIM only create route on a specific table to preserve default route.
 # This is fine in a VM, where you might want to keep the route and use nr-binder.
 # But it is better to have a container with the same behaviour as a real UE.
