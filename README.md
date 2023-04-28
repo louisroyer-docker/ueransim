@@ -7,6 +7,17 @@ By default, configuration file from templating is used if no `--config` or `-c` 
 command: [" "]
 ```
 
+## TUN interface
+To be able to use both images, you have to give it some capabilities and define some devices to the containers you create or you won't be able to use them: this is totally normal and expected.
+If you use Docker Compose for example, you have to add:
+```yaml
+cap_add:
+  - NET_ADMIN 
+devices:
+  - "/dev/net/tun"
+```
+This is the equivalent of `--cap-add=NET_ADMIN --device /dev/net/tun` option of Docker. 
+
 ## UE image
 - On DockerHub: [`louisroyer/ueransim-ue`](https://hub.docker.com/r/louisroyer/ueransim-ue)
 
