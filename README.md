@@ -64,6 +64,7 @@ environment:
 Environment variable used to select templating system:
 ```yaml
 environment:
+  ROUTING_SCRIPT: ""
   TEMPLATE_SCRIPT: "template-script.sh"
   TEMPLATE_SCRIPT_ARGS: ""
   CONFIG_FILE: "/etc/ueransim/gnb.yaml"
