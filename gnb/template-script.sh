@@ -45,8 +45,8 @@ sed \
 	-e "s/%ID_LEN/${ID_LEN:-32}/g" \
 	-e "s/%TAC/${TAC:-1}/g" \
 	-e "s/%RLS_IP/${RLS_IP}/g" \
-	-e "s/%N2_IP/${RLS_IP}/g" \
-	-e "s/%N3_IP/${RLS_IP}/g" \
+	-e "s/%N2_IP/${N2_IP}/g" \
+	-e "s/%N3_IP/${N3_IP}/g" \
 	-e "s/%AMF_CONFIGS/${AMF_CONFIGS_SUB}/g" \
 	-e "s/%SUPPORTED_NSSAIS/${SUPPORTED_NSSAIS_SUB}/g" \
 "${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"
