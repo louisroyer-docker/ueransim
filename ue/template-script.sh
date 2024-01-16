@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# Copyright 2024 Louis Royer. All rights reserved.
+# Use of this source code is governed by a MIT-style license that can be
+# found in the LICENSE file.
+# SPDX-License-Identifier: MIT
+
 set -e
 if [ -z "$GNBS" ]; then
 	echo "Missing mandatory environment variable (GNBS)." > /dev/stderr
@@ -50,15 +55,28 @@ for NSSAI in ${CONFIGURED_NSSAI}; do
 	fi
 done
 
-sed \
-	-e "s/%MCC/${MCC:-001}/g" \
-	-e "s/%MNC/${MNC:-01}/g" \
-	-e "s/%MSISDN/${MSISDN:-0000000000}/g" \
-	-e "s/%KEY/${KEY:-8baf473f2f8fd09487cccbd7097c6862}/g" \
-	-e "s/%OP/${OP:-8e27b6af0e692e750f32667a3b14605d}/g" \
-	-e "s/%AMF/${AMF:-8000}/g" \
-	-e "s/%GNB/${GNB_SUB}/g" \
-	-e "s/%SESSIONS/${SESSIONS_SUB}/g" \
-	-e "s/%DEFAULT_NSSAI/${DEFAULT_NSSAI_SUB}/g" \
-	-e "s/%CONFIGURED_NSSAI/${CONFIGURED_NSSAI_SUB}/g" \
-"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"
+awk \
+	-v MCC="${MCC:-001}" \
+	-v MNC="${MNC:-01}" \
+	-v MSISDN="${MSISDN:-0000000000}" \
+	-v KEY="${KEY:-8baf473f2f8fd09487cccbd7097c6862}" \
+	-v OP="${OP:-8e27b6af0e692e750f32667a3b14605d}" \
+	-v AMF="${AMF:-8000}" \
+	-v GNB="${GNB_SUB}" \
+	-v SESSIONS="${SESSIONS_SUB}" \
+	-v DEFAULT_NSSAI="${DEFAULT_NSSAI_SUB}" \
+	-v CONFIGURED_NSSAI="${CONFIGURED_NSSAI_SUB}" \
+	'{
+		sub(/%MCC/, MCC);
+		sub(/%MNC/, MNC);
+		sub(/%MSISDN/, MSISDN);
+		sub(/%KEY/, KEY);
+		sub(/%OP/, OP);
+		sub(/%AMF/, AMF);
+		sub(/%GNB/, GNB);
+		sub(/%SESSIONS/, SESSIONS);
+		sub(/%DEFAULT_NSSAI/, DEFAULT_NSSAI);
+		sub(/%CONFIGURED_NSSAI/, CONFIGURED_NSSAI);
+		print;
+	}' \
+	"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"

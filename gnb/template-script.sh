@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# Copyright 2024 Louis Royer. All rights reserved.
+# Use of this source code is governed by a MIT-style license that can be
+# found in the LICENSE file.
+# SPDX-License-Identifier: MIT
+
 set -e
 if [ -z "$RLS_IP" ]; then
 	echo "Missing mandatory environment variable (RLS_IP)." > /dev/stderr
@@ -38,15 +43,28 @@ for NSSAI in ${SUPPORTED_NSSAIS}; do
 	fi
 done
 
-sed \
-	-e "s/%MCC/${MCC:-001}/g" \
-	-e "s/%MNC/${MNC:-01}/g" \
-	-e "s/%NCI/${NCI:-0x000000010}/g" \
-	-e "s/%ID_LEN/${ID_LEN:-32}/g" \
-	-e "s/%TAC/${TAC:-1}/g" \
-	-e "s/%RLS_IP/${RLS_IP}/g" \
-	-e "s/%N2_IP/${N2_IP}/g" \
-	-e "s/%N3_IP/${N3_IP}/g" \
-	-e "s/%AMF_CONFIGS/${AMF_CONFIGS_SUB}/g" \
-	-e "s/%SUPPORTED_NSSAIS/${SUPPORTED_NSSAIS_SUB}/g" \
-"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"
+awk \
+	-v MCC="${MCC:-001}" \
+	-v MNC="${MNC:-01}" \
+	-v NCI="${NCI:-0x000000010}" \
+	-v ID_LEN="${ID_LEN:-32}" \
+	-v TAC="${TAC:-1}" \
+	-v RLS_IP="${RLS_IP}" \
+	-v N2_IP="${N2_IP}" \
+	-v N3_IP="${N3_IP}" \
+	-v AMF_CONFIGS="${AMF_CONFIGS_SUB}" \
+	-v SUPPORTED_NSSAIS="${SUPPORTED_NSSAIS_SUB}" \
+	'{
+		sub(/%MCC/, MCC);
+		sub(/%MNC/, MNC);
+		sub(/%NCI/, NCI);
+		sub(/%ID_LEN/, ID_LEN);
+		sub(/%TAC/, TAC);
+		sub(/%RLS_IP/, RLS_IP);
+		sub(/%N2_IP/, N2_IP);
+		sub(/%N3_IP/, N3_IP);
+		sub(/%AMF_CONFIGS/, AMF_CONFIGS);
+		sub(/%SUPPORTED_NSSAIS/, SUPPORTED_NSSAIS);
+		print;
+	}' \
+	"${CONFIG_TEMPLATE}" > "${CONFIG_FILE}"
