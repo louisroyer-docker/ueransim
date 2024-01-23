@@ -23,7 +23,7 @@ COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 # by default [docker-setup](https://github.com/louisroyer/docker-setup) can be used, but you are free to use another one
 ENV ROUTING_SCRIPT="docker-setup"
 # required to run docker-setup in non-daemon mode
-ENV ONESHOT: "true"
+ENV ONESHOT="true"
 
 COPY ./template-script.sh /usr/local/bin/template-script.sh
 ENV TEMPLATE_SCRIPT="template-script.sh"

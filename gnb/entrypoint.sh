@@ -25,7 +25,7 @@ else
 fi
 
 if [ -n "${ROUTING_SCRIPT}" ]; then
-	"${ROUTING_SCRIPT}" &
+	"${ROUTING_SCRIPT}"
 fi
 
 # UERANSIM is able to wait for AMF, `wait-for-it` is not required

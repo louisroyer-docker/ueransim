@@ -15,12 +15,19 @@ ARG BUILD_DATE=""
 
 RUN apt-get update -q && DEBIAN_FRONTEND=non-interactive apt-get install -qy --no-install-recommends --no-install-suggests \
     ueransim \
+    docker-setup \
     && apt-get upgrade -qy \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY ./routing.sh /usr/local/bin/routing.sh
-ENV ROUTING_SCRIPT="routing.sh"
+COPY ./daemonize.sh /usr/local/bin/daemonize.sh
+# by default [docker-setup](https://github.com/louisroyer/docker-setup) can be used, but you are free to use another one
+ENV ROUTING_SCRIPT="docker-setup"
+# required to run docker-setup in non-daemon mode
+ENV ONESHOT="true"
+ENV PRE_INIT_HOOK="daemonize.sh"
+ENV PRE_INIT_HOOK_0="routing.sh"
 
 COPY ./template-script.sh /usr/local/bin/template-script.sh
 ENV TEMPLATE_SCRIPT="template-script.sh"
