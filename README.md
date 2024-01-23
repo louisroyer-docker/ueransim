@@ -29,9 +29,9 @@ environment:
   TEMPLATE_SCRIPT_ARGS: ""
   CONFIG_FILE: "/etc/ueransim/ue.yaml"
   CONFIG_TEMPLATE: "/etc/ueransim/template-ue.yaml"
-  ONESHOT="true"
-  PRE_INIT_HOOK="daemonize.sh"
-  PRE_INIT_HOOK_0="routing.sh"
+  ONESHOT: "true"
+  PRE_INIT_HOOK: "daemonize.sh"
+  PRE_INIT_HOOK_0: "routing.sh"
 ```
 
 If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
@@ -76,7 +76,7 @@ environment:
   TEMPLATE_SCRIPT_ARGS: ""
   CONFIG_FILE: "/etc/ueransim/gnb.yaml"
   CONFIG_TEMPLATE: "/etc/ueransim/template-gnb.yaml"
-  ONESHOT="true"
+  ONESHOT: "true"
 ```
 
 If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
