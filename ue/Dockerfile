@@ -19,23 +19,17 @@ RUN apt-get update -q && DEBIAN_FRONTEND=non-interactive apt-get install -qy --n
     && apt-get upgrade -qy \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY ./routing.sh /usr/local/bin/routing.sh
-COPY ./daemonize.sh /usr/local/bin/daemonize.sh
-# by default [docker-setup](https://github.com/louisroyer/docker-setup) can be used, but you are free to use another one
-ENV ROUTING_SCRIPT="docker-setup"
-# required to run docker-setup in non-daemon mode
-ENV ONESHOT="true"
-ENV PRE_INIT_HOOK="daemonize.sh"
-ENV PRE_INIT_HOOK_0="routing.sh"
+COPY ./*.sh /usr/local/bin/
+COPY ./template-ue.yaml /usr/local/share/ueransim/
 
-COPY ./template-script.sh /usr/local/bin/template-script.sh
-ENV TEMPLATE_SCRIPT="template-script.sh"
-ENV TEMPLATE_SCRIPT_ARGS=""
-
-COPY ./template-ue.yaml /etc/ueransim/template-ue.yaml
-ENV CONFIG_FILE="/etc/ueransim/ue.yaml"
-ENV CONFIG_TEMPLATE="/etc/ueransim/template-ue.yaml"
+ENV ROUTING_SCRIPT="docker-setup" \
+    ONESHOT="true" \
+    PRE_INIT_HOOK="daemonize.sh" \
+    PRE_INIT_HOOK_0="routing.sh" \
+    TEMPLATE_SCRIPT="template-script.sh" \
+    TEMPLATE_SCRIPT_ARGS="" \
+    CONFIG_FILE="/etc/ueransim/ue.yaml" \
+    CONFIG_TEMPLATE="/usr/local/share/ueransim/template-ue.yaml"
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["--help"]

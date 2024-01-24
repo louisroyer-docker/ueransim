@@ -28,7 +28,7 @@ environment:
   TEMPLATE_SCRIPT: "template-script.sh"
   TEMPLATE_SCRIPT_ARGS: ""
   CONFIG_FILE: "/etc/ueransim/ue.yaml"
-  CONFIG_TEMPLATE: "/etc/ueransim/template-ue.yaml"
+  CONFIG_TEMPLATE: "/usr/local/share/ueransim/template-ue.yaml"
   ONESHOT: "true"
   PRE_INIT_HOOK: "daemonize.sh"
   PRE_INIT_HOOK_0: "routing.sh"
@@ -75,7 +75,7 @@ environment:
   TEMPLATE_SCRIPT: "template-script.sh"
   TEMPLATE_SCRIPT_ARGS: ""
   CONFIG_FILE: "/etc/ueransim/gnb.yaml"
-  CONFIG_TEMPLATE: "/etc/ueransim/template-gnb.yaml"
+  CONFIG_TEMPLATE: "/usr/local/share/ueransim/template-gnb.yaml"
   ONESHOT: "true"
 ```
 
