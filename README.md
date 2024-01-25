@@ -12,11 +12,11 @@ To be able to use both images, you have to give it some capabilities and define 
 If you use Docker Compose for example, you have to add:
 ```yaml
 cap_add:
-  - NET_ADMIN 
+  - NET_ADMIN
 devices:
   - "/dev/net/tun"
 ```
-This is the equivalent of `--cap-add=NET_ADMIN --device /dev/net/tun` option of Docker. 
+This is the equivalent of `--cap-add=NET_ADMIN --device /dev/net/tun` option of Docker.
 
 ## UE image
 - On DockerHub: [`louisroyer/ueransim-ue`](https://hub.docker.com/r/louisroyer/ueransim-ue)
@@ -47,7 +47,7 @@ environment:
   OP: "8e27b6af0e692e750f32667a3b14605d"
   AMF: "8000"
   # The following variable have no default values
-  # Replace the following example addresses with your gNB's ones 
+  # Replace the following example addresses with your gNB's ones
   GNBS: |-
     - 192.0.2.2
     - 2001:db8::2

@@ -33,4 +33,3 @@ if [[ $config_opt -eq 1 ]]; then
 else
 	exec nr-ue "$@"
 fi
-

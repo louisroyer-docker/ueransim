@@ -10,7 +10,7 @@ tun_is_up () {
 }
 
 
-until tun_is_up 
+until tun_is_up
 do
 	sleep 1
 done

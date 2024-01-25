@@ -5,6 +5,8 @@
 # SPDX-License-Identifier: MIT
 
 set -e
+mkdir -p "$(dirname "${CONFIG_FILE}")"
+
 if [ -z "$GNBS" ]; then
 	echo "Missing mandatory environment variable (GNBS)." > /dev/stderr
 	exit 1
