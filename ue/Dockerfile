@@ -22,7 +22,7 @@ RUN apt-get update -q && DEBIAN_FRONTEND=non-interactive apt-get install -qy --n
 COPY ./*.sh /usr/local/bin/
 COPY ./template-ue.yaml /usr/local/share/ueransim/
 
-ENV ROUTING_SCRIPT="docker-setup" \
+ENV ROUTING_SCRIPT="routing.sh" \
     ONESHOT="true" \
     PRE_INIT_HOOK="daemonize.sh" \
     PRE_INIT_HOOK_0="routing.sh" \
