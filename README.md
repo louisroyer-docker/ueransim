@@ -1,22 +1,24 @@
 # UERANSIM Docker Images
-WARNING: **The following images are NOT official builds of UERANSIM**, in the future they may include beta-functionalities.
+> [!WARNING]
+> **The following images are NOT official builds of UERANSIM**, in the future they may include beta-functionalities.
 
-By default, configuration file from templating is used if no `--config` or `-c` is passed as argument. To start without argument, use:
-
-```yaml
-command: [" "]
-```
+> [!TIP]
+> By default, configuration file from templating is used if no `--config` or `-c` is passed as argument. To start without argument, use:
+> ```yaml
+> command: [" "]
+> ```
 
 ## TUN interface
-To be able to use both images, you have to give it some capabilities and define some devices to the containers you create or you won't be able to use them: this is totally normal and expected.
-If you use Docker Compose for example, you have to add:
-```yaml
-cap_add:
-  - NET_ADMIN
-devices:
-  - "/dev/net/tun"
-```
-This is the equivalent of `--cap-add=NET_ADMIN --device /dev/net/tun` option of Docker.
+> [!IMPORTANT]
+> To be able to use both images, you have to give it some capabilities and define some devices to the containers you create or you won't be able to use them: this is totally normal and expected.
+> If you use Docker Compose for example, you have to add:
+> ```yaml
+> cap_add:
+>   - NET_ADMIN
+> devices:
+>   - "/dev/net/tun"
+> ```
+> This is the equivalent of `--cap-add=NET_ADMIN --device /dev/net/tun` option of Docker.
 
 ## UE image
 - On DockerHub: [`louisroyer/ueransim-ue`](https://hub.docker.com/r/louisroyer/ueransim-ue)
@@ -34,8 +36,9 @@ environment:
   PRE_INIT_HOOK_0: "routing.sh"
 ```
 
-If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
-The environment variable `ONESHOT` is set to `"true"`.
+> [!TIP]
+> If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
+> The environment variable `ONESHOT` is set to `"true"`.
 
 Environment variables for templating:
 ```yaml
@@ -79,8 +82,9 @@ environment:
   ONESHOT: "true"
 ```
 
-If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
-The environment variable `ONESHOT` is set to `"true"`.
+> [!TIP]
+> If you choose to configure the container using `docker-setup` (default), please refer to [`docker-setup`'s documentation](https://github.com/louisroyer/docker-setup).
+> The environment variable `ONESHOT` is set to `"true"`.
 
 Environment variables for templating:
 ```yaml
